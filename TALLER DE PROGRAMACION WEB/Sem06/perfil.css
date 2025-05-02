@@ -1,0 +1,159 @@
+/*IMPORTACIONES DE LETRAS*/
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');*/
+
+
+/*CSS*/
+body {
+    background: url(img/fond.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Segoe UI' , sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    background: url(img/fon_reverse.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 350px;
+    width: 500px;
+    display: flex;
+}
+
+.section1{
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.derecha{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.div1, .div2, .div3 , .div4{
+    flex: 1;
+
+}
+
+h2{
+    font-family: 'Cal Sans',sans-serif;
+    color: white;
+}
+p{
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+/*CSS OTORGADO POR LA DOCENTE*/
+
+img {
+    border-radius: 50%;
+    width: 170px;
+    margin: auto;
+    margin-bottom: auto;
+    align-items: center;
+}
+
+.profesion {
+    color: #555;
+    margin: 10px 0;
+}
+
+.info-contacto {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.info-contacto li {
+    margin-left: 12px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    
+}
+
+
+i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.redes a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.redes a:hover {
+    color: #007bff;
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 600px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .section1, .derecha {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        width: 130px;
+        margin-bottom: 20px;
+    }
+
+    .info-contacto {
+        text-align: center;
+    }
+
+    .info-contacto li {
+        font-size: 14px;
+        margin-left: 0;
+    }
+
+    .redes {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .redes a {
+        font-size: 24px;
+        margin: 8px;
+    }
+
+    html, body {
+        overflow-x: hidden;
+    }
+}
