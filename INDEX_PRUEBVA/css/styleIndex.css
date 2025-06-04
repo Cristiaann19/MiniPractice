@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h2 {
+    margin: 20px auto;
+    text-align: center;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 20px;
+}
+
+.encabezado {
+    background-color: #444141;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    position: relative;
+}
+
+.encabezado-izquierda {
+    display: flex;
+    gap: 7%;
+    flex: 1;
+}
+
+.encabezado-izquierda .img1 img {
+    width: 15rem;
+    margin: 0px 10px;
+}
+
+.encabezado-centro{
+    justify-items: center;
+}
+
+.encabezado-centro .links {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    color: white;
+}
+.encabezado-centro .links li{
+    list-style: none;
+}
+
+.encabezado-centro .links li a {
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-size: 1.5;
+}
+
+.encabezado-centro .links li a:hover {
+    background-color: orangered;
+    border-radius: 5px;
+}
+
+.encabezado-derecha {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.encabezado-derecha a{
+    color: white;
+}
+
+.encabezado-derecha a:hover{
+    color: orangered;
+}
+
+.menu-icon {
+    color: white;
+    cursor: pointer;
+}
+
+#toggle-menu{
+    display: none;
+}
+
+.div-android{
+    display: none;
+}
+
+.navegacion-android {
+    display: none;
+}
+
+
+
+
+/*BOTON OSCURO*/
+.boton-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #444141;
+    color: white;
+    border: none;
+    border-radius: 30%;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+}
+
+.boton-flotante:hover {
+    background-color: orangered;
+}
+
+body.modo-oscuro {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+body.modo-oscuro header {
+    background-color: #2a2a2a;
+}
+
+/*MODAL*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; /* Modal tiene un z-index alto para estar encima del header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+    animation: slide-down 0.5s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 2px solid #fff;
+    width: 90%;
+    max-width: 730px;
+    border-radius: 10px;
+    color: #000;
+    position: relative;
+    overflow: auto;
+    max-height: 90vh;
+    text-align: center; /* Alinea todo el contenido al centro */
+    animation: fadeIn 0.5s ease-out; /* Animación para el contenido */
+}
+
+#modal-description{
+    color: white;
+}
+
+/* Asegurarse de que el título esté centrado */
+.modal-content h2 {
+    margin: 0; /* Elimina márgenes innecesarios */
+    font-size: 1.5em; /* Ajusta el tamaño del título si es necesario */
+    
+}
+
+.close-btn {
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    
+    
+}
+
+.modal-body img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: contain;
+    
+}
+
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.description {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border: 1px solid #555;
+    line-height: 1.6;
+    word-wrap: break-word;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+.btn-details {
+    padding: 10px 20px;
+    background-color: #484b4e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 100px;
+    margin-top: 15px;
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+
+}
+
+.btn-details:hover {
+    background-color: #9ca0a3;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/*FOOTER*/
+footer {
+    background-color: #444141;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+footer p, a {
+    font-size: 16px;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+.payment-logos ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.payment-logos li img {
+    width: 200px;
+    height: auto;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+}
+/*END FOOTER*/
+main{
+    padding: 5px;
+}
+/*====================================================*/
+/* ========================== */
+/*   SECCIÓN DE CARRUSEL     */
+/* ========================== */
+.container-carrusel {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    margin: 40px auto;
+    box-sizing: border-box;
+    max-width: 1200px; /* o lo que quieras */
+    padding: 0 20px;
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+    padding: 0 20px;
+}
+.carrusel-track .game:last-child {
+    margin-right: 0; /* Elimina margen adicional si existiera */
+}
+
+.game {
+    flex-shrink: 0;
+    width: calc(25% - 20px);
+    max-width: 250px;
+    margin: 0;
+}
+
+.game img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-izq,
+.btn-der {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.btn-izq {
+    left: 0px;
+}
+.btn-der {
+    right: 0px;
+}
+
+/* ========== RESPONSIVE: TABLET ========== */
+@media (max-width: 992px) {
+    .game {
+        width: calc(33.33% - 13px); /* 3 tarjetas por fila */
+    }
+
+    .game img {
+        height: 300px;
+    }
+}
+
+/* ========== RESPONSIVE: CELULAR ========== */
+@media (max-width: 768px) {
+    .game {
+        width: calc(50% - 10px); /* 2 tarjetas por fila */
+    }
+
+    .game img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .btn-izq,
+    .btn-der {
+        font-size: 1.5rem;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game {
+        width: 100%; /* 1 tarjeta por fila en celulares pequeños */
+    }
+}
+/*====================================================*/
+
+
+@media (max-width: 900px) {
+    .encabezado {
+        padding: 10px 15px;
+    }
+
+    .encabezado-izquierda .img1 img {
+        display: block;
+        width: 13rem;
+        margin: 0px auto;
+    }
+
+    .encabezado-centro {
+        display: none;
+    }
+
+    .encabezado-derecha {
+        flex: 0 0 auto;
+        gap: 10px;
+    }
+    .div-android{
+        display: block;
+    }
+
+    #toggle-menu:checked ~ .navegacion-android {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 40%;
+        height: 100vh;
+        padding: 10px 0;
+        z-index: 10;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        background-color: #2e2e2e;
+    }
+
+    .navegacion-android .links li {
+        list-style: none;
+    }
+    .navegacion-android .links li a{
+        text-decoration: none;
+        padding: 8px 12px;
+        display: inline-block;
+        color: white;
+        font-family: "Special Gothic Condensed One", sans-serif;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 1.5;
+    }
+    .navegacion-android .links li a:hover {
+        background-color: orangereds;
+
+    }
+    
+}
