@@ -62,11 +62,13 @@
                 <div class="container-carrusel">
                     <button class="btn-izq">&#10094</button>
                         <div class="carrusel-track" id=" carruselTrack">
+                            <!--
                             <div class="game">
                                 <img src="https://i.pinimg.com/736x/a5/c5/29/a5c529a21b85c978bd4e1874762d29d3.jpg" alt="Counter Strike 2"
                                     data-title="Counter Strike 2" class="image-popular" 
                                     data-description="Counter-Strike 2 es un videojuego de disparos táctico en primera persona multijugador de 2023 desarrollado y publicado por Valve. Es la quinta entrega principal de la serie Counter-Strike. Desarrollado como una versión actualizada de la entrada principal anterior, Counter-Strike: Global Offensive (2012), se anunció el 22 de marzo de 2023 y se lanzó el 27 de septiembre de 2023, reemplazando a Global Offensive en Steam.">
                             </div>
+                            -->
                             <div class="game">
                                 <img src="https://i.pinimg.com/736x/b2/48/a4/b248a47671cc9b3d3f7c1fdd23a0a8a5.jpg" alt="Call of Duty Modern Warfare III">
                             </div>
@@ -93,8 +95,6 @@
                 </div>
             </section>
         </main>
-        <!-- Modal para la imagen -->
-        
 
     </div>
     
@@ -133,6 +133,7 @@
             </div>
         </div>
     </footer>
+    <!-- Modal para la imagen -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -144,9 +145,13 @@
                         <p id="modal-description"></p>
                     </div>
                     <a href="#" class="btn-details" id="modal-button">Más detalles</a>
+                    <button class="buy-btn" onclick="addToCart()">
+                        <i class="fas fa-shopping-cart"></i> Agregar
+                    </button>
                 </div>
             </div>
         </div>
+    </div>    
     <button id="modo-oscuro-btn" class="boton-flotante">
         <i class="fa-solid fa-moon"></i>
     </button>
