@@ -63,50 +63,37 @@ document.getElementById("modo-oscuro-btn").addEventListener("click", function ()
 
 /*FUNCIONES DEL MODAL*/
 
-const gameCards = document.querySelectorAll(".game");
+// Agrega esto antes de cerrar el </body> o en tu archivo JS
+// filepath: tu_archivo.js
 
-function abrirModal(imageData) {
-    const modal = document.getElementById("modal");
-    const modalImage = document.getElementById("modal-image");
-    const modalButton = document.getElementById("modal-button");
-    const modalDescription = document.getElementById("modal-description");
-    const modalTitle = document.getElementById("modal-title");
+// Selecciona imágenes dentro de todas las clases de juegos
+document.querySelectorAll(
+  '.juegoS .imagen-con-descripcion img, ' +
+  '.juegoA .imagen-con-descripcion img, ' +
+  '.juegoAvtr .imagen-con-descripcion img, ' +
+  '.juegoL .imagen-con-descripcion img, ' +
+  '.juegoD .imagen-con-descripcion img'
+).forEach((img) => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', function() {
+    const title = img.alt;
+    const imageSrc = img.src;
+    const description = img.parentElement.querySelector('.descripcion').textContent;
 
-    modal.classList.add('show');
-    document.body.classList.add('modal-open');
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-image').src = imageSrc;
+    document.getElementById('modal-description').textContent = description;
 
-    modalImage.src = imageData.src;
-    modalDescription.textContent = imageData.dataset.description;
-    modalButton.href = imageData.dataset.detailsLink;
-    modalTitle.textContent = imageData.dataset.title;
-}
-
-function cerrarModal() {
-    const modal = document.getElementById("modal");
-    modal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-}
-
-// Agregar el evento de click para abrir el modal en las tarjetas de juego
-gameCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const image = card.querySelector(".image-popular, .image-carrusel");
-        if (image) abrirModal(image);
-    });
+    document.getElementById('modal').style.display = 'flex';
+  });
 });
 
-// Evento para cerrar el modal al hacer clic en el botón de cierre (X)
-document.querySelectorAll(".close-btn").forEach(btn => {
-    btn.addEventListener('click', cerrarModal);
-});
+// Cierra el modal al hacer clic en la X
+document.querySelector('.close-btn').onclick = function() {
+  document.getElementById('modal').style.display = 'none';
+};
 
-// Evento para cerrar el modal al hacer clic fuera del modal
-window.addEventListener('click', (event) => {
-    const modal = document.getElementById("modal");
-    if (event.target === modal) cerrarModal();
-});
-
-// Evento para cerrar el modal al presionar la tecla Escape
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") cerrarModal();
-});
+// Cierra el modal al hacer clic fuera del contenido
+document.getElementById('modal').onclick = function(e) {
+  if (e.target === this) this.style.display = 'none';
+};
