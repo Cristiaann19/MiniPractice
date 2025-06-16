@@ -5,11 +5,7 @@
     padding: 0;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+
 
 .wrapper {
   display: flex;
@@ -109,8 +105,15 @@ h2 {
     display: none;
 }
 
-
-
+li a {
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: white;
+    font-family: "Special Gothic Condensed One", sans-serif;
+    font-size: 1rem;
+}
 
 /*BOTON OSCURO*/
 .boton-flotante {
@@ -134,13 +137,62 @@ h2 {
 }
 
 body.modo-oscuro {
-    background-color: #1e1e1e;
+    background-color: #191919;
     color: white;
 }
 
-body.modo-oscuro header {
-    background-color: #191919;
+/* Ocultar el menú en escritorio */
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    top: 60px; /* ajusta según tu header */
+    right: 10px;
+    width: 150px;
+    background: #333;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 999;
 }
+
+.dropdown_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown_menu ul li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.dropdown_menu ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown_menu.open {
+    display: block;
+    height: 190px;
+}
+
+.toggle_btn {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.toggle_btn {
+        display: none;
+    }
+/* Responsive: oculta nav grande y muestra hamburguesa */
+@media (max-width: 768px) {
+    
+    .toggle_btn {
+        display: block;
+    }
+}
+
+
 
 /*MODAL*/
 .modal {
@@ -296,8 +348,6 @@ body.modal-open {
 
 
 
-
-
 /*FOOTER*/
 footer {
     background-color: #444141;
@@ -358,69 +408,111 @@ main{
 /*   SECCIÓN DE CARRUSEL     */
 /* ========================== */
 .container-carrusel {
-    display: flex;
-    justify-content: flex-start;
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-    margin: 40px auto;
-    box-sizing: border-box;
-    max-width: 1200px; /* o lo que quieras */
-    padding: 0 20px;
-}
-
-.carrusel-track {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    transition: transform 0.5s ease;
+    margin: 20px;
     padding: 0 20px;
-}
-.carrusel-track .game:last-child {
-    margin-right: 0; /* Elimina margen adicional si existiera */
-}
-
-.game {
-    flex-shrink: 0;
-    width: calc(25% - 20px);
-    max-width: 250px;
-    margin: 0;
 }
 
 .game img {
     width: 100%;
-    height: 400px;
+    height: 360px;
     object-fit: cover;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.game img:hover{
+.game img:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn-izq,
-.btn-der {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-    user-select: none;
+
+/*JUEGOS*/
+/* ========================== */
+/*     SECCIONES DE JUEGOS   */
+/* ========================== */
+#Accion, #Aventura, #Deportes, #Lucha, #Supervivencia {
+    text-align: center;
+    margin: 20px;
+    padding: 0 20px;
 }
 
-.btn-izq {
-    left: 0px;
+#Accion h3, #Aventura h3, #Deportes h3, #Lucha h3, #Supervivencia h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Press Start 2P", system-ui;;
 }
-.btn-der {
-    right: 0px;
+
+.juegosAccion, .juegosAventura, .juegosDeportes, .juegosLucha, .juegosSupervivencia {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+.juegoA, .juegoAvtr, .juegoD, .juegoL, .juegoS {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.juegoA img, .juegoAvtr img, .juegoD img, .juegoL img, .juegoS img {
+    width: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+    display: block;
+}
+
+.juegoA:hover, .juegoAvtr:hover, .juegoD:hover, .juegoL:hover, .juegoS:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.juegoA:hover img, .juegoAvtr:hover img, .juegoD:hover img, .juegoL:hover img, .juegoS:hover img {
+    opacity: 0.8;
+}
+
+.descripcion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    height: auto;
+    border-radius: 0 0 12px 12px;
+    transform: translateY(100%);
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.juegoA:hover .descripcion,
+.juegoAvtr:hover .descripcion,
+.juegoD:hover .descripcion,
+.juegoL:hover .descripcion,
+.juegoS:hover .descripcion {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+
 
 /* ========== RESPONSIVE: TABLET ========== */
 @media (max-width: 992px) {
@@ -445,11 +537,6 @@ main{
         object-fit: cover;
     }
 
-    .btn-izq,
-    .btn-der {
-        font-size: 1.5rem;
-        padding: 6px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -479,39 +566,7 @@ main{
         flex: 0 0 auto;
         gap: 10px;
     }
-    .div-android{
-        display: block;
-    }
+    
 
-    #toggle-menu:checked ~ .navegacion-android {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 40%;
-        height: 100vh;
-        padding: 10px 0;
-        z-index: 10;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        background-color: #2e2e2e;
-    }
-
-    .navegacion-android .links li {
-        list-style: none;
-    }
-    .navegacion-android .links li a{
-        text-decoration: none;
-        padding: 8px 12px;
-        display: inline-block;
-        color: white;
-        font-family: "Special Gothic Condensed One", sans-serif;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        font-size: 1.5;
-    }
-    .navegacion-android .links li a:hover {
-        background-color: orangereds;
-
-    }
     
 }
